@@ -3,14 +3,14 @@ using System.Text;
 
 Console.WriteLine("Start Generating Load");
 Console.WriteLine(await ParallelHttpRequestsInBatchesWithSemaphoreSlim());
-
+await Task.Delay(100000);
 Console.WriteLine("Completed.");
 
 async Task<HttpResponseMessage[]> ParallelHttpRequestsInBatchesWithSemaphoreSlim()
 {
     var tasks = new List<Task<HttpResponseMessage>>();
-    const int numberOfRequests = 5000;
-    const int maxParallelRequests = 5000;
+    const int numberOfRequests = 7000;
+    const int maxParallelRequests = 7000;
     var semaphoreSlim = new SemaphoreSlim(maxParallelRequests, maxParallelRequests);
 
     for (var i = 0; i < numberOfRequests; ++i)
